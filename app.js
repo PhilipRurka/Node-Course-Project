@@ -9,7 +9,7 @@ const passport = require('passport');
 const promisify = require('es6-promisify');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
-const routes = require('./routes');
+const routes = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
 
@@ -40,7 +40,7 @@ app.use(session({
   key: process.env.KEY,
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection }, { useUnifiedTopology: true })
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
 // // Passport JS is what we use to handle our logins
